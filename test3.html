@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 인스턴스 여러개 사용</title>
+
+    <!-- <script src="./js/vue.min.js"></script> -->
+    <script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
+
+    <script>
+        addEventListener("DOMContentLoaded", function() {
+            vueInit();
+        });
+
+        function vueInit() {
+            Vue.component("global", {
+                template: "<div>전역 컴포넌트</div>"
+            });
+
+            var com1 = {
+                template: "<div>app에 들어갈 템플릿</div>"
+            }
+
+            var com2 = {
+                template: "<div>app2에 들어갈 템플릿</div>"
+            }
+            
+            new Vue({
+                el: "#app",
+                data: {
+                    message: "new Vue를 여러개 사용해보자"
+                },
+                components: {
+                    "com1": com1
+                }
+            });
+
+            new Vue({
+                el: "#app2",
+                data: {
+                    msg: "2번째 new Vue 선언!!"
+                },
+                components: {
+                    "com2": com2
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    
+    <div id="app">
+        {{message}}
+        <!-- 전역 컴포넌트라서 2곳에서 사용 가능 -->
+        <global></global>
+        <com1></com1>
+        <!-- app2의 지역 컴포넌트라서 사용할 수 없음 -->
+        <com2></com2>
+    </div>
+
+    <div id="app2">
+        {{msg}}
+        <!-- 전역 컴포넌트라서 2곳에서 사용 가능 -->
+        <global></global>
+        <com2></com2>
+    </div>
+</body>
+</html>

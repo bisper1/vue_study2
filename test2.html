@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery와 Vue.js</title>
+
+    
+    
+
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"> -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script> -->
+
+<script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
+
+    <script>
+        // Jquery와 Vue는 바로는 동시에 사용할 수 없음
+        // Vue에서 jquery를 임포트하는 방식을 사용해야 함
+        // 부트스트랩도 동일하게 임포트하는 방식을 사용해야 함
+        // addEventListener("DOMContentLoaded", function() {
+        //     vueInit();
+        // });
+    
+        $(document).ready(function() {
+            vueInit();
+        });
+
+        function vueInit() {
+            Vue.component("my-component", {
+                template: "<div>전역 컴포넌트가 등록되었습니다.</div>"
+            });
+
+            new Vue({
+                el: "#app"
+            });
+        }
+    </script>
+
+</head>
+<body>
+    <div id="app">
+        {{ message }}
+    </div>
+</body>
+</html>

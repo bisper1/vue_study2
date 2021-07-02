@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js 시작</title>
+
+    <!-- <script src="./js/vue.min.js"></script> -->
+    <script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
+    <!-- <script src="https://unpkg.com/vue@3.1.2/dist/vue.global.js"></script> -->
+    <!-- <script src="https://unpkg.com/vue@next"></script> -->
+
+    <script>
+        addEventListener("DOMContentLoaded", function() {
+            vueInit();
+        });
+
+        function vueInit() {
+            new Vue({
+                el: '#app',
+                data: {
+                    message: 'Hello Vue.js!'
+                }
+            });
+        }
+    </script>
+
+</head>
+<body>
+    <div id="app">
+        {{ message }}
+    </div>
+    
+    <!-- <script>
+        new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vue.js!'
+            }
+        });
+    </script> -->
+</body>
+</html>

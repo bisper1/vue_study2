@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="./js/vue.min.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
+    <script>
+        addEventListener("DOMContentLoaded", function() {
+            vueInit();
+        });
+
+        function vueInit() {
+            var main = {
+                template: "<div>main</div>"
+            };
+            var login = {
+                template: "<div>login</div>"
+            };
+
+            var routes = [
+                { path: "/main", component: main },
+                { path: "/login", component: login }
+            ];
+
+            var router = new VueRouter({
+                mode: "history",
+                routes
+            });
+
+            var app = new Vue({
+                router
+            }).$mount("#app");
+        }
+    </script>
+</head>
+<body>
+    <div id="app">
+        <h1>뷰 라우터 예제</h1>
+        <p>
+            <router-link to="/main">main 컴포넌트로 이동</router-link>
+            <router-link to="/login">login 컴포넌트로 이동</router-link>
+        </p>
+        <router-view></router-view>
+    </div>
+</body>
+</html>

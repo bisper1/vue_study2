@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트 표현식 사용 시 주의점</title>
+
+    <script src="./js/vue.min.js"></script>
+
+    <script>
+        addEventListener("DOMContentLoaded", vueInit);
+
+        function vueInit() {
+            var app = new Vue({
+                data: {
+                    message: "hello Vue.js!!"
+                },
+                computed: {
+                    reversedMessage: function() {
+                        return this.message.split('').reverser().join('');
+                    }
+                }
+            }).$mount("#app");
+        }
+
+    </script>
+</head>
+<body>
+    <div id="app">
+        {{ var a = 10; }}
+        {{ if (true) { return 100 } }}
+        {{ true ? 100 : 0 }}
+
+        {{ message.split('').reverse().join('') }}
+        {{ reversedMessage }}
+    </div>
+</body>
+</html>

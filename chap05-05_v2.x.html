@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-on 디렉티브 이용하기</title>
+
+    <script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
+
+    <script>
+        addEventListener("DOMContentLoaded", vueInit);
+
+        function vueInit() {
+            new Vue({
+                el: "#app",
+                methods: {
+                    clickBtn: function() {
+                        alert("click");
+                    },
+                    clickBtn2: function(data) {
+                        alert("click " + data + " times");
+                    },
+                    clickBtn3: function(event) {
+                        console.log(event);
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div id="app">
+        <button v-on:click="clickBtn">클릭</button>
+        <button v-on:click="clickBtn2(10)">클릭(매개변수 있음)</button>
+        <button v-on:click="clickBtn3">클릭</button>
+    </div>
+</body>
+</html>

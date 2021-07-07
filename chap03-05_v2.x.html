@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        <child-component v-bind:propsdata="message"></child-component>
+    </div>
+
+    <hr>
+
+    <div id="app2">
+        <com v-bind:data="msg"></com>
+    </div>
+
+    <script>
+        Vue.component("child-component", {
+            props: ["propsdata"],
+            template: "<p>{{ propsdata }}</p>"
+        });
+
+        var cmp = {
+            props: ["data"],
+            template: "<h4>{{ data }}</h4>"
+        }
+
+        new Vue({
+            el: "#app",
+            data: {
+                message: "hello vue! passed from parent component"
+            }
+        });
+
+        new Vue({
+            el: "#app2",
+            data: {
+                msg: "지역 컴포넌트로 테스트",
+            },
+            components: {
+                "com" : cmp
+            }
+        });
+    </script>
+</body>
+</html>

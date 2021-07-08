@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+		$("#btnOK").on("click", function() {
+			$.ajax({
+				type: "POST",
+				contentType: "application/json",
+				url: "/",
+				data: {test:"test"},
+				dataType: 'json',
+				success: function (data) {
+					alert("ajax 성공");
+					alert(data);
+					/* var json = "<h4>Ajax Response</h4><pre>" + JSON.stringify(data, null, 4) + "</pre>";
+					$('#feedback').html(json);
+					console.log("SUCCESS : ", data);
+					$("#btn-search").prop("disabled", false); */
+				},
+				error: function (e) {
+					alert("에러");
+					/* var json = "<h4>Ajax Response</h4><pre>" + e.responseText + "</pre>";
+					$('#feedback').html(json); console.log("ERROR : ", e);
+					$("#btn-search").prop("disabled", false); */
+				}
+			});
+		});
+	});
+</script>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="form-group">
+					<label for="num1">숫자 1 : </label>
+					<input type="text" class="form-control" id="num1" name="num1">
+				</div> 
+				<div class="form-group">
+					<label for="num2">숫자 2 : </label>
+					<input type="text" class="form-control" id="num2" name="num2">
+				</div>
+				<button class="btn btn-outline-primary btn-block" id="btnOK">확인</button>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

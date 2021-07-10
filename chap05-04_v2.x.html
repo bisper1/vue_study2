@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>디렉티브 다루기</title>
+
+    <!-- <script src="./js/vue.min.js"></script> -->
+    <script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
+
+    <script>
+        addEventListener("DOMContentLoaded", vueInit);
+
+        function vueInit() {
+            var app = new Vue({
+                data: {
+                    flag: true,
+                    systems: ['android', 'ios', 'window'],
+                    uid: 10
+                },
+                methods: {
+                    popupAlert: function() {
+                        return alert("경고창 표시");
+                    }
+                },
+            }).$mount("#app");
+        }
+    </script>
+</head>
+<body>
+    <div id="app">
+        <a href="" v-if="flag">두잇 vue.js</a>
+
+        <ul>
+            <li v-for="system in systems">{{ system }}</li>
+        </ul>
+        <p v-show="flag">두잇 vue.js</p>
+        <h5 v-bind:id="uid">뷰 입문서</h5>
+        <button v-on:click="popupAlert">경고창 버튼</button>
+    </div>
+</body>
+</html>

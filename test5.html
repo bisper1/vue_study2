@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>axio</title>
+
+    <!-- <script src="./js/vue.min.js"></script> -->
+    <script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+        addEventListener("DOMContentLoaded", vueInit);
+
+        function vueInit() {
+            var app = new Vue({
+                methods: {
+                    getData: function() {
+                        // axios.post("http://api.odcloud.kr/api/15077586/v1/centers?page=1&perPage=10&returnType=JSON&serviceKey=MQ8moCpDCqz42c3kxwz2LHfm%2BevXvXYOTYnrZjpLTYgYqArm4QD7hxWxCGM%2F24BBmgODLVMFUM6mAAH4XCFQcg%3D%3D")
+                        axios.post("http://localhost:8080/ajax/test")
+                        .then(function(response) {
+                            console.log("*** axios 응답 ***");
+                            console.log(response);
+                        })
+                        .catch(function(error) {
+                            console.log("*** 에러 발생 ***");
+                            console.log(error);
+                        });
+                    }
+                },
+            }).$mount("#app");
+        }
+    </script>
+</head>
+<body>
+    <div id="app">
+        <button v-on:click="getData">프레임워크 목록 가져오기</button>
+    </div>
+</body>
+</html>
